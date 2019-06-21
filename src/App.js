@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const list = [{
+  title: 'react',
+  url: 'https://reactjs.org',
+  author: 'Jordan Walke',
+  num_comments: '3',
+  points: 4,
+  objectID: 0
+}, {
+  title: 'redux',
+  url: 'https://redux.js.org',
+  author: 'Dan Abramov, Andrew Clark',
+  num_comments: 2,
+  points: 5,
+  objectID: 1
+}];
+
+class App extends React.Component {
+  render() {
+    let welcome = 'Welcome my friend to the Road to learn React';
+    return (
+      <div className="App">
+        <h2>{welcome}</h2>
+      </div>
+    );
+  }
 }
 
 export default App;
