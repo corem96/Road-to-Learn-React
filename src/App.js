@@ -48,13 +48,16 @@ class App extends React.Component {
     const { searchTerm, list } = this.state;
     return (
       <div className="App">
+        <Search 
+          value={searchTerm}
+          onChange={this.onSearchChange}/>
+        <Table
+          list={list}
+          pattern={searchTerm}
+          onDismiss={this.onDismiss}/>
+
         <div className="list-area">
-          <form>
-            <label>Search by </label>
-            <input type="text"
-              onChange={this.onSearchChange} value={searchTerm}
-              placeholder="term"/>
-          </form>
+          
 
         {list.filter(isSearched(searchTerm))
           .map(item =>
@@ -74,6 +77,25 @@ class App extends React.Component {
       </div>
     );
   }
+}
+
+class Search extends React.Component {
+  render() {
+    const { value, onChange } = this.props;
+
+    return (
+      <form>
+        <label>Search by </label>
+        <input type="text"
+          onChange={this.onSearchChange} value={searchTerm}
+          placeholder="term"/>
+      </form>
+    );
+  }
+}
+
+class Table extends React.Component {
+  
 }
 
 export default App;
