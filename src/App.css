@@ -31,3 +31,40 @@
     transform: rotate(360deg);
   }
 }
+
+.author-list-area {
+  position:relative;
+  padding-left:40px;
+  padding-bottom:10px;
+  margin-bottom:10px;
+}
+.btnGroup {
+  margin:10px 0 0;
+}
+.btn-blue {
+  background:#0366cb;
+  color:#fff;
+}
+.btn-grey {
+  background:#ccc;
+  color:#333;
+}
+.list-area {
+  width: 100%;
+}
+.title {
+  font-size:18px;
+  color:#333;
+}
+.author {
+  font-size:16px;
+  color:#777777;
+}
+.desc {
+  font-size:14px;
+  color:#a4a4a4;
+}
+form {
+  margin: 10px;
+  text-align: left;
+}
