@@ -68,3 +68,26 @@ form {
   margin: 10px;
   text-align: left;
 }
+input[type=text] {
+  margin: 0 5px;
+  padding: 5px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  border: 1px solid #777777;
+  border-radius:2px;
+  height: 30px;
+  width: 200px;
+  color: #282c34;
+}
+button {
+  height: 3em;
+  width: 10%;
+  padding: 1em auto;
+  margin: 1em auto;
+  background-color: #61dafb;
+  border: 1px solid #4bafca;
+  border-radius: 3px;
+  text-transform: uppercase; 
+}
