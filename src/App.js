@@ -49,11 +49,9 @@ class App extends React.Component {
     const { searchTerm, list } = this.state;
     return (
       <div className="App">
-        <Search 
+        <Search
           value={searchTerm}
-          onChange={this.onSearchChange}>
-          Search by
-        </Search>
+          onChange={this.onSearchChange}>Search by</Search>
         <Table
           list={list}
           pattern={searchTerm}
@@ -63,11 +61,8 @@ class App extends React.Component {
   }
 }
 
-class Search extends React.Component {
-  render() {
-    const { value, onChange, children } = this.props;
-
-    return (
+const Search = ({ value, onChange, children }) => {
+  return (
       <form>
         <div className="Input">
           {children}<input type="text"
@@ -77,46 +72,32 @@ class Search extends React.Component {
       </form>
     );
   }
-}
 
-class Table extends React.Component {
-  render() {
-    const { list, pattern, onDismiss } = this.props;
-
-    return (
-      <div className="list-area">
-        {list.filter(isSearched(pattern)).map(item => 
-          <div className="author-list-area" key={item.objectID}>
-            <div className="title">{item.title}</div>
-            <div className="author">{item.author}</div>
-            <div className="desc">comments: {item.num_comments}</div>
-            <div>
-              <Button onClick={() => onDismiss(item.objectID)}>Dismiss</Button>
-            </div>
+const Table = ({ list, pattern, onDismiss }) => {
+  return (
+    <div className="list-area">
+      {list.filter(isSearched(pattern)).map(item => 
+        <div className="author-list-area" key={item.objectID}>
+          <div className="title">{item.title}</div>
+          <div className="author">{item.author}</div>
+          <div className="desc">comments: {item.num_comments}</div>
+          <div>
+            <Button onClick={() => onDismiss(item.objectID)}>Dismiss</Button>
           </div>
-        )}
-      </div>
-    );
-  }
+        </div>
+      )}
+    </div>
+  );
 }
 
-class Button extends React.Component {
-  render() {
-    const {
-      onClick,
-      className = '',
-      children
-    } = this.props;
-
-
-    return (
-      <div>
-        <button type="button"
-          className={className}
-          onClick={onClick}>{children}</button>
-      </div>
-    );
-  }
+const Button = ({onClick,className = '',children}) => {
+  return (
+    <div>
+      <button type="button"
+        className={className}
+        onClick={onClick}>{children}</button>
+    </div>
+  );
 }
 
 
