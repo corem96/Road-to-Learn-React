@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 import React from 'react';
 import './App.css';
 
@@ -27,7 +28,7 @@ class App extends React.Component {
     this.state = {
       list,
       searchTerm: ''
-    }
+    };
 
     this.onSearchChange = this.onSearchChange.bind(this);
     this.onDismiss = this.onDismiss.bind(this);
@@ -50,30 +51,13 @@ class App extends React.Component {
       <div className="App">
         <Search 
           value={searchTerm}
-          onChange={this.onSearchChange}/>
+          onChange={this.onSearchChange}>
+          Search by
+        </Search>
         <Table
           list={list}
           pattern={searchTerm}
           onDismiss={this.onDismiss}/>
-
-        <div className="list-area">
-          
-
-        {list.filter(isSearched(searchTerm))
-          .map(item =>
-            
-              <div className="author-list-area" key={item.objectID}>
-                <div className="title">{item.title}</div>
-                <div className="author">{item.author}</div>
-                <div className="desc">comments: {item.num_comments}</div>
-                <div>
-                  <button onClick={() => this.onDismiss(item.objectID)}
-                    type="button">Dismiss</button>
-                </div>
-              </div>
-        )
-      }
-        </div>
       </div>
     );
   }
@@ -81,21 +65,40 @@ class App extends React.Component {
 
 class Search extends React.Component {
   render() {
-    const { value, onChange } = this.props;
+    const { value, onChange, children } = this.props;
 
     return (
       <form>
-        <label>Search by </label>
-        <input type="text"
-          onChange={this.onSearchChange} value={searchTerm}
+        <div className="Input">
+          {children}<input type="text"
+          onChange={onChange} value={value}
           placeholder="term"/>
+        </div>
       </form>
     );
   }
 }
 
 class Table extends React.Component {
-  
+  render() {
+    const { list, pattern, onDismiss } = this.props;
+
+    return (
+      <div className="list-area">
+        {list.filter(isSearched(pattern)).map(item => 
+          <div className="author-list-area" key={item.objectID}>
+            <div className="title">{item.title}</div>
+            <div className="author">{item.author}</div>
+            <div className="desc">comments: {item.num_comments}</div>
+            <div>
+              <button onClick={() => onDismiss(item.objectID)}
+                type="button">Dismiss</button>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
 }
 
 export default App;
