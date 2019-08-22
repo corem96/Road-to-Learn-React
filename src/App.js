@@ -91,8 +91,7 @@ class Table extends React.Component {
             <div className="author">{item.author}</div>
             <div className="desc">comments: {item.num_comments}</div>
             <div>
-              <button onClick={() => onDismiss(item.objectID)}
-                type="button">Dismiss</button>
+              <Button onClick={() => onDismiss(item.objectID)}>Dismiss</Button>
             </div>
           </div>
         )}
@@ -100,5 +99,25 @@ class Table extends React.Component {
     );
   }
 }
+
+class Button extends React.Component {
+  render() {
+    const {
+      onClick,
+      className = '',
+      children
+    } = this.props;
+
+
+    return (
+      <div>
+        <button type="button"
+          className={className}
+          onClick={onClick}>{children}</button>
+      </div>
+    );
+  }
+}
+
 
 export default App;
