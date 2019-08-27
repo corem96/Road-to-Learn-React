@@ -14,9 +14,10 @@ code {
 }
 a {
   color: #222;
+  text-decoration: none;
 }
 a:hover {
-  text-decoration: underline;
+  color: #ff0080
 }
 ul, li {
   list-style: none;
@@ -33,6 +34,7 @@ input {
   border: 1px solid #dddddd;
 }
 button {
+  width: 100%;
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #dddddd;
