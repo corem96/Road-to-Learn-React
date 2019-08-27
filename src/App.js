@@ -2,21 +2,11 @@
 import React from 'react';
 import './App.css';
 
-const list = [{
-  title: 'react',
-  url: 'https://reactjs.org',
-  author: 'Jordan Walke',
-  num_comments: '3',
-  points: 4,
-  objectID: 0
-}, {
-  title: 'redux',
-  url: 'https://redux.js.org',
-  author: 'Dan Abramov, Andrew Clark',
-  num_comments: 2,
-  points: 5,
-  objectID: 1
-}];
+const DEFAULT_QUERY = 'redux';
+const PATH_BASE = 'https://hn.algolia.com/api/v1';
+const PATH_SEARCH = '/search';
+const PARAM_SEARCH = 'query=';
+// const url = `${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${DEFAULT_QUERY}`;
 
 const isSearched = searchTerm => 
   item => item.title.toLowerCase().includes(searchTerm.toLowerCase());
@@ -26,12 +16,26 @@ class App extends React.Component {
     super(props);
     
     this.state = {
-      list,
-      searchTerm: ''
+      result: null,
+      searchTerm: DEFAULT_QUERY
     };
 
+    this.searchTopStories = this.setSearchTopStories.bind(this);
     this.onSearchChange = this.onSearchChange.bind(this);
     this.onDismiss = this.onDismiss.bind(this);
+  }
+
+  componentDidMount() {
+    const { searchTerm } = this.state;
+
+    fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}`)
+      .then(response => response.json())
+      .then(result => this.setSearchTopStories(result))
+      .catch(error => error);
+  }
+
+  setSearchTopStories(result) {
+    this.setState({ result });
   }
 
   onSearchChange(event) {
@@ -46,14 +50,16 @@ class App extends React.Component {
   }
 
   render() {
-    const { searchTerm, list } = this.state;
+    const { searchTerm, result } = this.state;
+    if (!result) { return null; }
+    
     return (
       <div className="App">
         <Search
           value={searchTerm}
           onChange={this.onSearchChange}>Search by</Search>
         <Table
-          list={list}
+          list={result.hits}
           pattern={searchTerm}
           onDismiss={this.onDismiss}/>
       </div>
@@ -78,9 +84,11 @@ const Table = ({ list, pattern, onDismiss }) => {
     <div className="list-area">
       {list.filter(isSearched(pattern)).map(item => 
         <div className="author-list-area" key={item.objectID}>
-          <div className="title">{item.title}</div>
           <div className="author">{item.author}</div>
-          <div className="desc">comments: {item.num_comments}</div>
+          <div className="list-body">
+            <a href={item.url} target="_blank" className="title">{item.title}</a>
+            <div className="desc">comments: {item.num_comments}</div>
+          </div>
           <div className="btnGroup">
             <Button onClick={() => onDismiss(item.objectID)}>Dismiss</Button>
           </div>
@@ -92,11 +100,9 @@ const Table = ({ list, pattern, onDismiss }) => {
 
 const Button = ({onClick,className = '',children}) => {
   return (
-    <div>
-      <button type="button"
+    <button type="button"
         className={className}
         onClick={onClick}>{children}</button>
-    </div>
   );
 }
 
