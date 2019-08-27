@@ -81,7 +81,7 @@ const Table = ({ list, pattern, onDismiss }) => {
           <div className="title">{item.title}</div>
           <div className="author">{item.author}</div>
           <div className="desc">comments: {item.num_comments}</div>
-          <div>
+          <div className="btnGroup">
             <Button onClick={() => onDismiss(item.objectID)}>Dismiss</Button>
           </div>
         </div>

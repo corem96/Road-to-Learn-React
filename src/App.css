@@ -31,26 +31,15 @@
     transform: rotate(360deg);
   }
 }
-
-.author-list-area {
-  position:relative;
-  padding-left:40px;
-  padding-bottom:10px;
-  margin-bottom:10px;
+.author-list-area{
+  margin-bottom: 20px;
 }
 .btnGroup {
   margin:10px 0 0;
 }
-.btn-blue {
-  background:#0366cb;
-  color:#fff;
-}
-.btn-grey {
-  background:#ccc;
-  color:#333;
-}
 .list-area {
   width: 100%;
+  margin: 20px;
 }
 .title {
   font-size:18px;
@@ -63,31 +52,4 @@
 .desc {
   font-size:14px;
   color:#a4a4a4;
-}
-form {
-  margin: 10px;
-  text-align: left;
-}
-input[type=text] {
-  margin: 0 5px;
-  padding: 5px;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -o-appearance: none;
-  border: 1px solid #777777;
-  border-radius:2px;
-  height: 30px;
-  width: 200px;
-  color: #282c34;
-}
-button {
-  height: 3em;
-  width: 10%;
-  padding: 1em auto;
-  margin: 1em auto;
-  background-color: #61dafb;
-  border: 1px solid #4bafca;
-  border-radius: 3px;
-  text-transform: uppercase; 
 }
