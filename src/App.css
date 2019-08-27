@@ -41,12 +41,16 @@
   display: grid;
   grid-template-columns: 80px minmax(100px,1fr) 160px;
   grid-gap: 2rem;
-  padding: 2rem;
+  padding: 3rem;
   border-radius: 16px;
-  border: 1px solid #a4a4a4;
+  border: 1px solid #bebebe;
 }
 .list-body {
   text-align:left;
+}
+.interactions {
+  width: 50%;
+  
 }
 .btnGroup {
   margin:0;
