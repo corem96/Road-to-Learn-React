@@ -49,6 +49,7 @@ class App extends React.Component {
     const { searchTerm, list } = this.state;
     return (
       <div className="App">
+        <h1>Basics in React</h1>
         <Search
           value={searchTerm}
           onChange={this.onSearchChange}>Search by</Search>
