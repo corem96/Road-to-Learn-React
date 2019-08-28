@@ -43,14 +43,19 @@
   grid-gap: 2rem;
   padding: 3rem;
   border-radius: 16px;
-  border: 1px solid #bebebe;
+  border: 1px solid #ccc;
+  background: #ececec;
+}
+.author-list-area:hover {
+  background: #c7ffde;
+  transition: ease 1s;
 }
 .list-body {
   text-align:left;
 }
 .interactions {
-  width: 50%;
-  
+  padding: 10px;
+  display: inline-block;
 }
 .btnGroup {
   margin:0;
@@ -67,4 +72,10 @@
 .desc {
   font-size:14px;
   color:#a4a4a4;
+}
+.results-count {
+  margin: 5px 0;
+  font-size: small;
+  text-align: left;
+  color:#777777;
 }

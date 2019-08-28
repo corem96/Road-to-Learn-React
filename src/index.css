@@ -17,7 +17,7 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: #ff0080
+  color: #00c251
 }
 ul, li {
   list-style: none;
@@ -31,7 +31,7 @@ input {
   border-radius: 5px;
   outline: none;
   margin-right: 10px;
-  border: 1px solid #dddddd;
+  border: 1px solid #ccc;
 }
 button[type=submit] {
   width: auto;
@@ -40,13 +40,15 @@ button {
   width: 100%;
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid #dddddd;
-  background: #e4e4e4;
+  border: 1px solid #ccc;
+  background: #e9e2d8;
   color: #343434;
   cursor: pointer;
 }
 button:hover {
   outline: none;
+  background: #ff9650;
+  border-color: #c5743e;
 }
 form {
   margin: 10px;
